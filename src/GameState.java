@@ -14,6 +14,7 @@ public class GameState {
     }
     public void gameOver(BattleShipsMap battleShipsMap){
         PlayerAttack playerAttack = new PlayerAttack();
+        gameOn(playerAttack);
         if (gameOn(playerAttack) == false) {
             System.exit(0);
         }
@@ -24,7 +25,6 @@ public class GameState {
             System.out.println();
             System.out.println("User ships destroyed: " + playerAttack.numberOfUserShipsHit + " | Computer ships destroyed: " + playerAttack.numberOfComputerShipsHit);
             System.out.println("--------------------------------------------");
-            gameOn(playerAttack);
-        }
+         }
     }
 }
