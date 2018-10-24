@@ -1,18 +1,4 @@
 
-/**
- * below method to increment each time the constructor is called... not helpful here
-class MyClass {
-    private static int counter;
-    public MyClass() {
-        //...
-        counter++;
-    }
-    public static int getNumOfInstances() {
-        return counter;
-    }
-}
-**/
-
 
 public class BattleShipsMap {
     Tile map[][];
