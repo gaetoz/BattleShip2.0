@@ -27,7 +27,7 @@ public class GameState {
             playerAttack.computerAttack(battleShipsMap);
             battleShipsMap.displayMap();
             System.out.println();
-            System.out.println("User ships destroyed: " + battleShipsMap.getUserShipsLeft() + " | Computer ships destroyed: " + battleShipsMap.getComputerShipsLeft());
+            System.out.println("User ships remaining: " + battleShipsMap.getUserShipsLeft() + " | Computer ships remaining: " + battleShipsMap.getComputerShipsLeft());
             System.out.println("--------------------------------------------");
          }
     }
