@@ -1,6 +1,3 @@
-//bugs:
-//if isHit second time at the same place (userShip or computerShip), it is considered one more point...
-
 
 public class BattleShipsGame {
     public static void main(String[] args) {
@@ -18,6 +15,7 @@ public class BattleShipsGame {
         ShipPositioning shipPositioning = new ShipPositioning();
         shipPositioning.UserPlacingShips(map1);
         shipPositioning.ComputerPlacingShips(map1);
+        map1.displayMap();
 
         GameState gameState = new GameState();
         gameState.gameOver(map1);

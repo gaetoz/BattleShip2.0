@@ -1,5 +1,7 @@
 public class UserShip extends Tile {
+    int isHitCount = 0;
 
+    public UserShip(){}
     public UserShip(int x, int y) {
         super(x, y);
         isHit = false;
@@ -9,6 +11,7 @@ public class UserShip extends Tile {
         if (isHit == false) {
             return "U";
         } else {
+            isHitCount++;
             return "X";
         }
     }

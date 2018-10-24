@@ -2,8 +2,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class PlayerAttack {
-    int numberOfUserShipsHit = 0;
-    int numberOfComputerShipsHit = 0;
 
     public void userAttack(BattleShipsMap battleShipsMap) {
         Scanner input = new Scanner(System.in);
@@ -17,14 +15,14 @@ public class PlayerAttack {
 
         if (battleShipsMap.map[x][y] instanceof UserShip) {
             battleShipsMap.map[x][y].userStrikeOwnShip();
-            numberOfUserShipsHit++;
-        } else if (battleShipsMap.map[x][y] instanceof ComputerShip) {
-            battleShipsMap.map[x][y].userStrikeComputerShip();
-            numberOfComputerShipsHit++;
-        } else{
-            battleShipsMap.map[x][y].userStrikeWater();
-        }
-    }
+
+            } else if (battleShipsMap.map[x][y] instanceof ComputerShip) {
+                battleShipsMap.map[x][y].userStrikeComputerShip();
+
+                } else {
+                    battleShipsMap.map[x][y].userStrikeWater();
+                }
+            }
 
     public void computerAttack(BattleShipsMap battleShipsMap) {
         Random rand = new Random();
@@ -35,10 +33,10 @@ public class PlayerAttack {
 
         if (battleShipsMap.map[x][y] instanceof UserShip) {
             battleShipsMap.map[x][y].computerStrikeUserShip();
-            numberOfUserShipsHit++;
+
         } else if (battleShipsMap.map[x][y] instanceof ComputerShip) {
             battleShipsMap.map[x][y].computerStrikeOwnShip();
-            numberOfComputerShipsHit++;
+
         } else{
             battleShipsMap.map[x][y].computerStrikeWater();
         }

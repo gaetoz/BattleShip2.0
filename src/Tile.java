@@ -2,7 +2,9 @@ public abstract class Tile {
     int x;
     int y;
     boolean isHit = false;
+    //int isHitCount = 0;
 
+    public Tile(){}
     public Tile(int x, int y) {
         this.x = x;
         this.y = y;
