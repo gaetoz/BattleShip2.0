@@ -1,33 +1,35 @@
-public class ComputerShip extends Tile {
+package Tiles;
 
-    public ComputerShip(){}
-    public ComputerShip(int x, int y) {
+public class UserShip extends Tile {
+
+    public UserShip(){}
+    public UserShip(int x, int y) {
         super(x, y);
         isHit = false;
     }
 
-    public String toString(){
+    public String toString() {
         if (isHit == false) {
-            return "C";
-        } else{
-            return "!";
+            return "U";
+        } else {
+            return "X";
         }
     }
 
-    public void userStrikeComputerShip() {
+    public void userStrikeOwnShip() {
         if (isHit == true) {
             System.out.println("Too bad.  That position was already played...  NEXT TURN!");
         } else {
-            System.out.println("BAM!  We hit the enemy ship!");
+            System.out.println("We have been hit by one of our own ships!");
             isHit = true;
         }
     }
 
-    public void computerStrikeOwnShip() {
+    public void computerStrikeUserShip() {
         if (isHit == true) {
             System.out.println("Too bad.  That position was already played...  NEXT TURN!");
         } else {
-            System.out.println("HAHA! Computer sunk its own ship!");
+            System.out.println("BOOM!  We have been hit by computer!");
             isHit = true;
         }
     }

@@ -1,8 +1,14 @@
+package UserComputerActions;
+
+import Map.BattleShipsMap;
+import Tiles.ComputerShip;
+import Tiles.EmptyTile;
+import Tiles.UserShip;
+
 import java.util.Random;
 import java.util.Scanner;
 
 public class ShipPositioning {
-    //BattleShipsMap battleShipsMap = new BattleShipsMap();
 
     public void UserPlacingShips(BattleShipsMap battleShipsMap){
         Scanner input = new Scanner(System.in);

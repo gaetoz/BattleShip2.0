@@ -1,3 +1,6 @@
+package ClientModule;
+
+import Map.BattleShipsMap;
 
 public class BattleShipsGame {
     public static void main(String[] args) {
@@ -12,12 +15,12 @@ public class BattleShipsGame {
         BattleShipsMap map1 = new BattleShipsMap(6, 6);
         map1.displayMap();
 
-        ShipPositioning shipPositioning = new ShipPositioning();
+        UserComputerActions.ShipPositioning shipPositioning = new UserComputerActions.ShipPositioning();
         shipPositioning.UserPlacingShips(map1);
         shipPositioning.ComputerPlacingShips(map1);
         map1.displayMap();
 
-        GameState gameState = new GameState();
+        ClientModuleCheck.GameState gameState = new ClientModuleCheck.GameState();
         gameState.gameOver(map1);
     }
 }

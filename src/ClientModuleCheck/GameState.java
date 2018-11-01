@@ -1,3 +1,7 @@
+package ClientModuleCheck;
+
+import Map.BattleShipsMap;
+import UserComputerActions.PlayerAttack;
 
 public class GameState {
 

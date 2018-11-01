@@ -1,8 +1,9 @@
+package Tiles;
+
 public abstract class Tile {
     int x;
     int y;
-    boolean isHit = false;
-    //int isHitCount = 0;
+    public boolean isHit = false;
 
     public Tile(){}
     public Tile(int x, int y) {

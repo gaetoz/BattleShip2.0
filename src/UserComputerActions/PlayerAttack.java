@@ -1,3 +1,9 @@
+package UserComputerActions;
+
+import Map.BattleShipsMap;
+import Tiles.ComputerShip;
+import Tiles.UserShip;
+
 import java.util.Random;
 import java.util.Scanner;
 
