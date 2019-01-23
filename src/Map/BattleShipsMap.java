@@ -6,18 +6,28 @@ import Tiles.Tile;
 import Tiles.UserShip;
 
 public class BattleShipsMap {
+    //set ROWS, COLUMNS to static final (6)
     public Tile map[][];
-    public int rows;
-    public int columns;
+    public static final int ROWS = 6;
+    public static final int COLUMNS = 6;
 
-    public BattleShipsMap(){}
-    public BattleShipsMap(int x, int y) {
-        this.rows = x;
-        this.columns = y;
-        this.map = new Tile[x][y];
+    public BattleShipsMap() {
+        //removed parameters x and y
+        //this.ROWS = x;
+        //this.COLUMNS = y;
+        this.map = new Tile[ROWS][COLUMNS];
+
+
+       /*
+       for(Tile[] inner : map){
+            for(map[i][j] : inner){
+                map[i][j] = new EmptyTile(i, j);
+            }
+        }*/
 
         for (int i = 0; i < map.length; i++) {
-            for (int j = 0; j < map.length; j++) {
+            //added [i] to map.length, good practice esp. in asymmetric multiD Array
+            for (int j = 0; j < map[i].length; j++) {
                 // Tiles.EmptyTile can be overriden by Tiles.UserShip or Tiles.ComputerShip
                 map[i][j] = new EmptyTile(i, j);
             }

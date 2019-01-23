@@ -5,12 +5,12 @@ public abstract class Tile {
     int y;
     public boolean isHit = false;
 
-    public Tile(){}
     public Tile(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
+    public abstract String toString();
     public void userStrikeWater() { }
     public void userStrikeOwnShip() { }
     public void userStrikeComputerShip(){ }

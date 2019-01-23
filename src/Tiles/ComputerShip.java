@@ -2,7 +2,6 @@ package Tiles;
 
 public class ComputerShip extends Tile {
 
-    public ComputerShip(){}
     public ComputerShip(int x, int y) {
         super(x, y);
         isHit = false;

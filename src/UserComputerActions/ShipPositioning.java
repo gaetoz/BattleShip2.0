@@ -10,25 +10,30 @@ import java.util.Scanner;
 
 public class ShipPositioning {
 
-    public void UserPlacingShips(BattleShipsMap battleShipsMap){
+    public void UserPlacingShips(BattleShipsMap battleShipsMap){    //throws ArrayIndexOutOfBoundsException  - thrown by JVM automatically
         Scanner input = new Scanner(System.in);
-
         for (int i = 1; i < 6; i++) {
-            System.out.print("Enter X coordinate [0-5] for your ship " + i + ": ");
-            int x = input.nextInt();
-            System.out.print("Enter Y coordinate [0-5] for your ship " + i + ": ");
-            int y = input.nextInt();
+            try {
+                System.out.print("Enter X coordinate [0-5] for your ship " + i + ": ");
+                int x = input.nextInt();
+                System.out.print("Enter Y coordinate [0-5] for your ship " + i + ": ");
+                int y = input.nextInt();
 
-            if (x < 0 || y < 0 || x > battleShipsMap.rows || y > battleShipsMap.columns) {
-                System.out.println("You must play within the bounds of the map");
+                //following block redundant since JVM automatically throws Runtime Exceptions
+                // if (x < 0 || y < 0 || x > BattleShipsMap.ROWS || y > BattleShipsMap.COLUMNS) {
+                    //throw new ArrayIndexOutOfBoundsException("Out of the Map. Retry!");
+                //}
+                if (battleShipsMap.map[x][y] instanceof UserShip) {
+                    System.out.println("You already have a ship on this position");
+                    i--;
+                }
+                if (battleShipsMap.map[x][y] instanceof EmptyTile) {
+                    battleShipsMap.map[x][y] = new UserShip(x, y);
+                }
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println(e.getMessage());
+                System.out.println("outside of the map. Please retry.");
                 i--;
-                continue;
-            }
-            if(battleShipsMap.map[x][y] instanceof UserShip) {
-                System.out.println("You already have a ship on this position");
-                i--;
-            } else if (battleShipsMap.map[x][y] instanceof EmptyTile) {
-                battleShipsMap.map[x][y] = new UserShip(x, y);
             }
         }
         System.out.println("User ships deployed.");
@@ -39,8 +44,8 @@ public class ShipPositioning {
         Random rand = new Random();
 
         for (int k = 1; k < 6; k++) {
-            int x = rand.nextInt(battleShipsMap.rows);
-            int y = rand.nextInt(battleShipsMap.columns);
+            int x = rand.nextInt(BattleShipsMap.ROWS);  //BSM.ROWS rather than bSM.ROWS since static member
+            int y = rand.nextInt(BattleShipsMap.COLUMNS);
             if (battleShipsMap.map[x][y] instanceof EmptyTile){
                 battleShipsMap.map[x][y] = new ComputerShip(x, y);
             } else{

@@ -9,33 +9,43 @@ import java.util.Scanner;
 
 public class PlayerAttack {
 
-    public void userAttack(BattleShipsMap battleShipsMap) {
+    public void userAttack(BattleShipsMap battleShipsMap){      //throws ArrayIndexOutOfBoundsException
         Scanner input = new Scanner(System.in);
 
         System.out.println();
         System.out.println("YOUR TURN");
-        System.out.print("Choose a coordinate X [0-5] to strike ship: ");
-        int x = input.nextInt();
-        System.out.print("Choose a coordinate Y [0-5] to strike ship: ");
-        int y = input.nextInt();
 
-        if (battleShipsMap.map[x][y] instanceof UserShip) {
-            battleShipsMap.map[x][y].userStrikeOwnShip();
+        try {
+            System.out.print("Choose a coordinate X [0-5] to strike ship: ");
+            int x = input.nextInt();
+            System.out.print("Choose a coordinate Y [0-5] to strike ship: ");
+            int y = input.nextInt();
 
-            } else if (battleShipsMap.map[x][y] instanceof ComputerShip) {
-                battleShipsMap.map[x][y].userStrikeComputerShip();
-
-                } else {
-                    battleShipsMap.map[x][y].userStrikeWater();
-                }
+           /* JVM automatically throw Runtime Exceptions
+           if (x < 0 || y < 0 || x > 5 || y > 5) {
+                throw new ArrayIndexOutOfBoundsException();
+            }*/
+            if (battleShipsMap.map[x][y] instanceof UserShip) {
+                battleShipsMap.map[x][y].userStrikeOwnShip();
             }
+            if (battleShipsMap.map[x][y] instanceof ComputerShip) {
+                battleShipsMap.map[x][y].userStrikeComputerShip();
+            }
+            else battleShipsMap.map[x][y].userStrikeWater();
+        }
+        catch(ArrayIndexOutOfBoundsException e){
+            System.out.println(e);
+            userAttack(battleShipsMap);
+        }
+    }
+
 
     public void computerAttack(BattleShipsMap battleShipsMap) {
         Random rand = new Random();
 
         System.out.println("COMPUTER'S TURN");
-        int x = rand.nextInt(battleShipsMap.rows);
-        int y = rand.nextInt(battleShipsMap.columns);
+        int x = rand.nextInt(BattleShipsMap.ROWS);
+        int y = rand.nextInt(BattleShipsMap.COLUMNS);
 
         if (battleShipsMap.map[x][y] instanceof UserShip) {
             battleShipsMap.map[x][y].computerStrikeUserShip();
@@ -43,8 +53,7 @@ public class PlayerAttack {
         } else if (battleShipsMap.map[x][y] instanceof ComputerShip) {
             battleShipsMap.map[x][y].computerStrikeOwnShip();
 
-        } else{
-            battleShipsMap.map[x][y].computerStrikeWater();
-        }
+        } else battleShipsMap.map[x][y].computerStrikeWater();
+
     }
 }

@@ -14,9 +14,7 @@ public class GameState {
             System.out.println("Great job... You win...");
             return false;
         }
-        else{
-            return true;
-        }
+        return true;
     }
 
     public void gameOver(BattleShipsMap battleShipsMap){

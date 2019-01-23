@@ -12,11 +12,12 @@ public class BattleShipsGame {
         System.out.println("DEPLOY SHIPS");
         System.out.println();
 
-        BattleShipsMap map1 = new BattleShipsMap(6, 6);
+        BattleShipsMap map1 = new BattleShipsMap();
         map1.displayMap();
 
         UserComputerActions.ShipPositioning shipPositioning = new UserComputerActions.ShipPositioning();
         shipPositioning.UserPlacingShips(map1);
+
         shipPositioning.ComputerPlacingShips(map1);
         map1.displayMap();
 
